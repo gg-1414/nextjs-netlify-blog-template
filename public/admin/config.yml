@@ -182,7 +182,7 @@ collections:
     extension: "mdx"
     format: "frontmatter"
     create: true
-    slug: "{{date}}{{slug}}"
+    slug: "{{date}}-{{slug}}"
     identifier_field: slug
     summary: "{{title}}"
     fields:

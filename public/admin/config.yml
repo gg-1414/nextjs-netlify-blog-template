@@ -176,9 +176,9 @@ collections:
         name: "hero"
         widget: "image"
 
-  - name: "blog-detail-basic"
-    label: "blog-detail-basic"
-    folder: "content/blog/"
+  - name: "blog-basic"
+    label: "Blog (Basic)"
+    folder: "content/blogs/"
     extension: "mdx"
     format: "frontmatter"
     create: true
@@ -186,6 +186,9 @@ collections:
     identifier_field: slug
     summary: "{{title}}"
     fields:
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
       - label: "Hero Image"
         name: "hero"
         widget: "image"
@@ -205,25 +208,18 @@ collections:
           displayFields:
             - "tags.*.name"
           valueField: "tags.*.slug"
-      - label: "Slug"
-        name: "slug"
-        widget: "string"
-      - label: "Title"
-        name: "title"
-        widget: "string"
       - label: "Publish Date"
         name: "date"
         widget: "datetime"
         format: "YYYY-MM-DD"
         dateFormat: "YYYY-MM-DD"
         timeFormat: false
-      - label: Author
-        name: "author"
+      - label: "Heading"
+        name: "heading"
         widget: "string"
-      - label: "Body 1"
-        name: "body1"
+      - label: "Byline"
+        name: "byline"
+        widget: "string"
+      - label: "Body Text"
+        name: "body-text"
         widget: "markdown"
-      - label: "Body 2"
-        name: "body2"
-        widget: "markdown"
-

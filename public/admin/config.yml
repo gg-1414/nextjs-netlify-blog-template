@@ -184,23 +184,23 @@ collections:
     create: true
     slug: "{{date}}-{{slug}}"
     identifier_field: slug
-    summary: "{{title}}"
+    summary: "{{heading}}"
     fields:
-      - label: "Publish Date"
-        name: "date"
+      - name: "date"
+        label: "Publish Date"
         widget: "datetime"
         format: "YYYY-MM-DD"
         dateFormat: "YYYY-MM-DD"
         timeFormat: false
-      - label: "Slug"
-        name: "slug"
+      - name: "slug"
+        label: "Slug"
         widget: "string"
-      - label: "Hero Image"
-        name: "hero"
+      - name: "hero"
+        label: "Hero Image"
         widget: "image"
-      - label: Tags
+      - name: "tags"
+        label: Tags
         label_singular: "Tag"
-        name: "tags"
         widget: list
         summary: "{{fields.tag}}"
         field:
@@ -214,12 +214,12 @@ collections:
           displayFields:
             - "tags.*.name"
           valueField: "tags.*.slug"
-      - label: "Heading"
-        name: "heading"
+      - name: "heading"
+        label: "Heading"
         widget: "string"
-      - label: "Byline"
-        name: "byline"
+      - name: "byline"
+        label: "Byline"
         widget: "string"
-      - label: "Body Text"
-        name: "body-text"
+      - name: "body-text"
+        label: "Body Text"
         widget: "markdown"

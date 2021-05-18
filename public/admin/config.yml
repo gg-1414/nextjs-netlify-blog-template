@@ -4,7 +4,6 @@ backend:
   # name: test-repo
 media_folder: public/images
 public_folder: /images
-publish_mode: editorial_workflow
 
 collections:
   - name: "config"
@@ -147,7 +146,7 @@ collections:
     extension: "mdx"
     format: "frontmatter"
     create: true
-    slug: "{{date}}_{{slug}}"
+    slug: "{{date}}_{{heading}}"
     identifier_field: slug
     summary: "{{heading}}"
     fields:
@@ -157,9 +156,6 @@ collections:
         format: "YYYY-MM-DD"
         dateFormat: "YYYY-MM-DD"
         timeFormat: false
-      - name: "slug"
-        label: "Slug"
-        widget: "string"
       - name: "hero"
         label: "Hero Image"
         widget: "image"

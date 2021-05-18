@@ -176,7 +176,7 @@ collections:
         name: "hero"
         widget: "image"
 
-  - name: "blog-basic"
+  - name: "blog-basic2"
     label: "Blog (Basic)"
     folder: "content/blogs/"
     extension: "mdx"

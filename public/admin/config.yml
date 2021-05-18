@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
   branch: master
+  # name: test-repo
 media_folder: public/images
 public_folder: /images
 publish_mode: editorial_workflow
@@ -138,4 +139,87 @@ collections:
           valueField: "tags.*.slug"
       - label: "Body"
         name: "body"
+        widget: "markdown"
+
+  - name: "blog"
+    label: "blog"
+    folder: "content/blog/"
+    extension: "mdx"
+    format: "frontmatter"
+    create: true
+    slug: "{{date}}{{slug}}"
+    identifier_field: slug
+    summary: "{{title}}"
+    fields: 
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        dateFormat: "YYYY-MM-DD"
+        timeFormat: false
+      - label: Author
+        name: "author"
+        widget: "string"
+      - label: "Body 1"
+        name: "body1"
+        widget: "markdown"
+      - label: "Body 2"
+        name: "body2"
+        widget: "markdown"
+      - label: "Hero Image"
+        name: "hero"
+        widget: "image"
+
+  - name: "blog-basic2"
+    label: "Blog (Basic)"
+    folder: "content/blogs/"
+    extension: "mdx"
+    format: "frontmatter"
+    create: true
+    slug: "{{date}}-{{slug}}"
+    identifier_field: slug
+    summary: "{{heading}}"
+    fields:
+      - name: "date"
+        label: "Publish Date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        dateFormat: "YYYY-MM-DD"
+        timeFormat: false
+      - name: "slug"
+        label: "Slug"
+        widget: "string"
+      - name: "hero"
+        label: "Hero Image"
+        widget: "image"
+      - name: "tags"
+        label: Tags
+        label_singular: "Tag"
+        widget: list
+        summary: "{{fields.tag}}"
+        field:
+          label: Tag
+          name: tag
+          widget: relation
+          collection: "meta"
+          file: "tags"
+          searchFields:
+            - "tags.*.name"
+          displayFields:
+            - "tags.*.name"
+          valueField: "tags.*.slug"
+      - name: "heading"
+        label: "Heading"
+        widget: "string"
+      - name: "byline"
+        label: "Byline"
+        widget: "string"
+      - name: "body-text"
+        label: "Body Text"
         widget: "markdown"

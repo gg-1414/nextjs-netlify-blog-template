@@ -186,6 +186,12 @@ collections:
     identifier_field: slug
     summary: "{{title}}"
     fields:
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        dateFormat: "YYYY-MM-DD"
+        timeFormat: false
       - label: "Slug"
         name: "slug"
         widget: "string"
@@ -208,12 +214,6 @@ collections:
           displayFields:
             - "tags.*.name"
           valueField: "tags.*.slug"
-      - label: "Publish Date"
-        name: "date"
-        widget: "datetime"
-        format: "YYYY-MM-DD"
-        dateFormat: "YYYY-MM-DD"
-        timeFormat: false
       - label: "Heading"
         name: "heading"
         widget: "string"

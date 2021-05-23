@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import Head from "next/head";
 import Layout from "../../../components/Layout";
 import BasicMeta from "../../../components/meta/BasicMeta";
 import OpenGraphMeta from "../../../components/meta/OpenGraphMeta";
@@ -19,6 +18,7 @@ type Props = {
   };
 };
 export default function Page({ posts, tags, pagination, page }: Props) {
+  console.log('>>>>>>>> [page].tsx page prop', page)
   const url = `/posts/page/${page}`;
   const title = "All posts";
   return (

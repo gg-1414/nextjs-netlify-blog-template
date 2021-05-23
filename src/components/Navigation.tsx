@@ -27,6 +27,13 @@ export default function Navigation() {
               </a>
             </Link>
           </li>
+          <li>
+            <Link href="/blog">
+              <a className={router.pathname === "/blog" ? "active" : null}>
+                blog basics
+              </a>
+            </Link>
+          </li>
         </ul>
         <style jsx>
           {`

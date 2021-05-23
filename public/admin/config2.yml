@@ -4,6 +4,7 @@ backend:
   # name: test-repo
 media_folder: public/images
 public_folder: /images
+publish_mode: editorial_workflow
 
 collections:
   - name: "config"
@@ -48,27 +49,6 @@ collections:
     editor:
       preview: false
     files:
-      - name: "authors"
-        label: "Authors"
-        file: "meta/authors.yml"
-        description: "Author descriptions"
-        fields:
-          - name: authors
-            label: Authors
-            label_singular: "Author"
-            widget: list
-            fields:
-              - label: "Slug"
-                name: "slug"
-                widget: "string"
-                hint: "The part of a URL identifies the author"
-              - label: "Name"
-                name: "name"
-                widget: "string"
-                hint: "First and Last"
-              - label: "Introduction"
-                name: "introduction"
-                widget: "text"
       - name: "tags"
         label: "Tags"
         file: "meta/tags.yml"
@@ -103,7 +83,7 @@ collections:
         widget: "string"
       - label: "Title"
         name: "title"
-        widget: "string"
+        widget: "s tring"
       - label: "Publish Date"
         name: "date"
         widget: "datetime"
@@ -140,28 +120,57 @@ collections:
         name: "body"
         widget: "markdown"
 
-  - name: "blog-basic"
-    label: "Blog (Basic)"
-    folder: "content/blogs/"
+  - name: "blog"
+    label: "blog"
+    folder: "content/blog/"
     extension: "mdx"
     format: "frontmatter"
     create: true
-    slug: "{{date}}_{{heading}}"
+    slug: "{{date}}{{slug}}"
     identifier_field: slug
-    summary: "{{heading}}"
-    fields:
-      - name: "date"
-        label: "Publish Date"
+    summary: "{{title}}"
+    fields: 
+      - label: "Slug"
+        name: "slug"
+        widget: "string"
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Publish Date"
+        name: "date"
         widget: "datetime"
         format: "YYYY-MM-DD"
         dateFormat: "YYYY-MM-DD"
         timeFormat: false
-      - name: "hero"
-        label: "Hero Image"
+      - label: Author
+        name: "author"
+        widget: "string"
+      - label: "Body 1"
+        name: "body1"
+        widget: "markdown"
+      - label: "Body 2"
+        name: "body2"
+        widget: "markdown"
+      - label: "Hero Image"
+        name: "hero"
         widget: "image"
-      - name: "tags"
-        label: Tags
+
+  - name: "blog-detail-basic"
+    label: "blog-detail-basic"
+    folder: "content/blog/"
+    extension: "mdx"
+    format: "frontmatter"
+    create: true
+    slug: "{{date}}-{{slug}}"
+    identifier_field: slug
+    summary: "{{title}}"
+    fields:
+      - label: "Hero Image"
+        name: "hero"
+        widget: "image"
+      - label: Tags
         label_singular: "Tag"
+        name: "tags"
         widget: list
         summary: "{{fields.tag}}"
         field:
@@ -175,12 +184,25 @@ collections:
           displayFields:
             - "tags.*.name"
           valueField: "tags.*.slug"
-      - name: "heading"
-        label: "Heading"
+      - label: "Slug"
+        name: "slug"
         widget: "string"
-      - name: "byline"
-        label: "Byline"
+      - label: "Title"
+        name: "title"
         widget: "string"
-      - name: "body"
-        label: "Body"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        dateFormat: "YYYY-MM-DD"
+        timeFormat: false
+      - label: Author
+        name: "author"
+        widget: "string"
+      - label: "Body 1"
+        name: "body1"
         widget: "markdown"
+      - label: "Body 2"
+        name: "body2"
+        widget: "markdown"
+

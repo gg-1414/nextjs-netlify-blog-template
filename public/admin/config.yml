@@ -181,6 +181,6 @@ collections:
       - name: "byline"
         label: "Byline"
         widget: "string"
-      - name: "body-text"
-        label: "Body Text"
+      - name: "body"
+        label: "Body"
         widget: "markdown"

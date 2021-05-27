@@ -188,6 +188,10 @@ collections:
         label: Categories
         widget: categories
         separator: __
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        pattern: ['.{12,}', "Must have at least 12 characters"]
       - name: "body"
         label: "Body"
         widget: "markdown"

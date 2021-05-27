@@ -195,7 +195,7 @@ collections:
             widget: object
             fields:
               - {label: Name, name: name, widget: string, default: "Emmet"}
-              - {label: Avatar, name: avatar, widget: image, default: "/img/ethel.jpg"}
+              - {label: Avatar, name: avatar, widget: image, default: "/img/overworked-gif.png"}
       - label: "Body"
         name: "body"
         widget: "list"

@@ -16,17 +16,26 @@ type Props = {
   children: React.ReactNode;
 }
 
+function addNbsp(str: string) {
+  const arr = str.split(" ");
+  arr.splice(-1, 0, '&nbsp;');
+  const newArr = arr.slice(0, -3);
+  newArr.push(arr.slice(-3, arr.length).join(""));
+  return {__html: `${newArr.join(" ")}`};
+}
+
 export default function BlogBasicLayout({
   slug,
   tags,
   heroImgDt,
   heroImgMb,
-  date,
+  // date,
   heading,
   byline,
   children,
 }: Props) {
   const keywords = tags.map(it => getTag(it).name);
+  console.log('children', children)
   return (
     <Layout>
       <BasicMeta
@@ -34,68 +43,83 @@ export default function BlogBasicLayout({
         title={heading}
         keywords={keywords}
       />
-      <div className={"container"}>
-        <article>
-          <header>
+      <article>
+        <section className="hero-img">
+          <picture className="mobile-only">
             <img src={heroImgMb} />
+          </picture>
+          <picture className="desktop-only">
             <img src={heroImgDt} />
-            <ul className={"tag-list"}>
-              {tags.map((it, i) => (
-                <li key={i}>
-                  <TagButton tag={getTag(it)} />
-                </li>
-              ))}
-            </ul>
-            <div className={"metadata"}>
-              <div>
-                <Date date={date}/>
-              </div>
-            </div>
-            <h2>{heading}</h2>
+          </picture>
+        </section>
+
+        <section className="content">
+          <ul className={"tag-list"}>
+            {tags.map((it, i) => (
+              <li key={i}>
+                <TagButton tag={getTag(it)} />
+              </li>
+            ))}
+          </ul>
+
+          {/* <div className={"metadata"}>
             <div>
-              {byline}
+              <Date date={date}/>
             </div>
-          </header>
-          <div>
-            {children}
-          </div>
-        </article>
-      </div>
+          </div> */}
+
+          <h2>{heading}</h2>
+          <p className="by-line" dangerouslySetInnerHTML={addNbsp(byline)}/>
+          <div className="body" dangerouslySetInnerHTML={{__html: `${children}`}}/>
+        </section>
+      </article>
       <style jsx>
         {`
-          .container {
-            display: block;
-            max-width: 36rem;
-            width: 100%;
-            margin: 0 auto;
-            box-sizing: border-box;
-            z-index: 0;
-          }
-          article {
-            flex: 1 0 auto;
+          .content {
+            padding: 20px;
           }
           img {
             width: 100%;
           }
-          h1 {
-            margin: 0 0 0 0.5rem;
-            font-size: 2.25rem;
+          h2 {
+            line-height: 1;
+            text-align: center;
+            font-size: 39px;
+            font-family: "Queens";
+            font-weight: 100;
+          }
+          .by-line {
+            font-size: 20px;
+            font-weight: 500;
+            text-align: center;
+            text-transform: uppercase;
           }
           .tag-list {
             list-style: none;
-            text-align: right;
-            margin: 1.75rem 0 0 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
           }
           .tag-list li {
             display: inline-block;
-            margin-left: 0.5rem;
+            margin-left: 16px;
+          }
+          .tag-list li:first-child {
+            margin-left: 0;
+          }
+          .body {
+            line-height: 1.5;
+          }
+
+          @media (max-width: 768px) {
+            .desktop-only {
+              display: none;
+            }
           }
 
           @media (min-width: 769px) {
-            .container {
-              display: flex;
-              flex-direction: column;
+            .mobile-only {
+              display: none;
             }
           }
         `}

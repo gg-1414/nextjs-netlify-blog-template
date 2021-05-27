@@ -12,7 +12,8 @@ import renderToString from "next-mdx-remote/render-to-string";
 export type Props = {
   slug: string;
   tags: string[];
-  heroImgSrc: string;
+  heroImgDtSrc: string;
+  heroImgMbSrc: string;
   dateString: string;
   heading: string;
   byline: string;
@@ -29,6 +30,7 @@ export default function Post({
   slug,
   tags,
   heroImgDtSrc,
+  heroImgMbSrc,
   dateString,
   heading,
   byline,
@@ -41,6 +43,7 @@ export default function Post({
       slug={slug}
       tags={tags}
       heroImgDt={heroImgDtSrc}
+      heroImgMb={heroImgMbSrc}
       date={parseISO(dateString)}
       heading={heading}
       byline={byline}
@@ -72,7 +75,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       slug: slug,
       tags: data.tags,
-      heroImgDtSrc: data.hero_img_desktop,
+      heroImgDtSrc: data.hero_img_dt,
+      heroImgMbSrc: data.hero_img_mb,
       dateString: data.date,
       heading: data.heading,
       byline: data.byline,

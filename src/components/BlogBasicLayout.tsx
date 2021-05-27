@@ -9,6 +9,7 @@ type Props = {
   slug: string;
   tags: string[];
   heroImgDt: string;
+  heroImgMb: string;
   date: Date;
   heading: string;
   byline: string;
@@ -19,6 +20,7 @@ export default function BlogBasicLayout({
   slug,
   tags,
   heroImgDt,
+  heroImgMb,
   date,
   heading,
   byline,
@@ -35,6 +37,7 @@ export default function BlogBasicLayout({
       <div className={"container"}>
         <article>
           <header>
+            <img src={heroImgMb} />
             <img src={heroImgDt} />
             <ul className={"tag-list"}>
               {tags.map((it, i) => (

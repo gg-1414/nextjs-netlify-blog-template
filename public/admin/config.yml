@@ -156,10 +156,10 @@ collections:
         format: "YYYY-MM-DD"
         dateFormat: "YYYY-MM-DD"
         timeFormat: false
-      - name: "hero_img_desktop"
+      - name: "hero_img_dt"
         label: "Hero Image Desktop"
         widget: "image"
-      - name: "hero_img_mobile"
+      - name: "hero_img_mb"
         label: "Hero Image Mobile"
         widget: "image"
       - name: "tags"

@@ -17,6 +17,7 @@ export type Props = {
   dateString: string;
   heading: string;
   byline: string;
+  bodyList: string[];
   source: MdxRemote.Source;
 }
 
@@ -34,10 +35,13 @@ export default function Post({
   dateString,
   heading,
   byline,
+  // bodyList,
   source
 }: Props) {
   const content = hydrate(source)
   console.log('content', content)
+  // const content = hydrate(source)
+  // console.log('content', content)
   return (
     <BlogBasicLayout
       slug={slug}
@@ -47,6 +51,7 @@ export default function Post({
       date={parseISO(dateString)}
       heading={heading}
       byline={byline}
+      // bodyList={bodyList}
     >
       {content}
     </BlogBasicLayout>
@@ -69,7 +74,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { content, data } = matter(source, {
     engines: { yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object }
   });
+  const test = matter(source, {
+    engines: { yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object }
+  });
+  console.log('test', test)
   console.log('data', data)
+  console.log('content', content)
   const mdxSource = await renderToString(content)
   return {
     props: {
@@ -80,6 +90,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       dateString: data.date,
       heading: data.heading,
       byline: data.byline,
+      // bodyList: data.body_list,
       source: mdxSource
     }
   }

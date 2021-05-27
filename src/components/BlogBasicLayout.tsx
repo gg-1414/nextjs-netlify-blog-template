@@ -13,6 +13,7 @@ type Props = {
   date: Date;
   heading: string;
   byline: string;
+  bodyList: string[];
   children: React.ReactNode;
 }
 
@@ -32,10 +33,10 @@ export default function BlogBasicLayout({
   // date,
   heading,
   byline,
+  // bodyList,
   children,
 }: Props) {
   const keywords = tags.map(it => getTag(it).name);
-  console.log('children', children)
   return (
     <Layout>
       <BasicMeta
@@ -70,7 +71,13 @@ export default function BlogBasicLayout({
 
           <h2>{heading}</h2>
           <p className="by-line" dangerouslySetInnerHTML={addNbsp(byline)}/>
-          <div className="body" dangerouslySetInnerHTML={{__html: `${children}`}}/>
+          <div className="body">{children}</div>
+          {/* <div className="body">
+            {bodyList.map((it, i) => (
+              <p key={i} dangerouslySetInnerHTML={{__html: it}}>
+              </p>
+            ))}
+          </div> */}
         </section>
       </article>
       <style jsx>

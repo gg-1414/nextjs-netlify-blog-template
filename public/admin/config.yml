@@ -184,6 +184,10 @@ collections:
       - name: "byline"
         label: "Byline"
         widget: "string"
-      - name: "body"
-        label: "Body"
-        widget: "markdown"
+      - label: "Body"
+        name: "body_list"
+        widget: "list"
+        field:
+          label: "Section"
+          name: "section"
+          widget: "markdown"

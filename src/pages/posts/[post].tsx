@@ -40,6 +40,7 @@ export default function Post({
   source,
 }: Props) {
   const content = hydrate(source, { components })
+  // console.log('content',content)
   return (
     <PostLayout
       title={title}

@@ -32,6 +32,7 @@ export function fetchBlogContent(): BlogContent[] {
       const slug = fileName.replace(/\.mdx$/, "");
       const fileContents = fs.readFileSync(fullPath, "utf8");
 
+      // console.log('fileContents',fileContents)
       // Use gray-matter to parse the blog metadata section
       const matterResult = matter(fileContents, {
         engines: {

@@ -27,6 +27,7 @@ export function fetchPostContent(): PostContent[] {
       // Read markdown file as string
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");
+      // console.log('fileContents',fileContents)
 
       // Use gray-matter to parse the post metadata section
       const matterResult = matter(fileContents, {

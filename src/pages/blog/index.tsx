@@ -30,7 +30,7 @@ export default function Index({blogs, pagination }: Props) {
 
 export const getStaticProps: GetStaticProps = async () => {
   const blogs = listBlogContent(1, config.posts_per_page);
-  console.log('blogs', blogs)
+  // console.log('blogs', blogs)
   const pagination = {
     current: 1,
     pages: Math.ceil(countBlogs() / config.posts_per_page),

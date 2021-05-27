@@ -33,10 +33,11 @@ export default function BlogBasicLayout({
   // date,
   heading,
   byline,
-  // bodyList,
+  bodyList,
   children,
 }: Props) {
   const keywords = tags.map(it => getTag(it).name);
+  console.log('childrenn', children)
   return (
     <Layout>
       <BasicMeta

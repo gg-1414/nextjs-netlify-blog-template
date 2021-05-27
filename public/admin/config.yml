@@ -187,5 +187,7 @@ collections:
       - label: "Body"
         name: "body"
         widget: "list"
-        fields: 
-          - { label: "Section", name: section, widget: "markdown" }
+        field:
+          label: "Section"
+          name: "section"
+          widget: "markdown"

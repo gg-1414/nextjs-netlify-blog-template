@@ -184,6 +184,10 @@ collections:
       - name: "byline"
         label: "Byline"
         widget: "string"
+      - name: categories
+        label: Categories
+        widget: categories
+        separator: __
       - name: "body"
         label: "Body"
         widget: "markdown"

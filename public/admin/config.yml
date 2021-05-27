@@ -184,10 +184,6 @@ collections:
       - name: "byline"
         label: "Byline"
         widget: "string"
-      - name: categories
-        label: Categories
-        widget: categories
-        separator: __
       - label: "Testimonials"
         name: "testimonials"
         widget: "list"
@@ -205,4 +201,3 @@ collections:
         widget: "list"
         fields: 
           - { label: "Section", name: section, widget: "markdown" }
-          

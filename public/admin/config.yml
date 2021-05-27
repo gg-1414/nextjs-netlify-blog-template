@@ -185,7 +185,7 @@ collections:
         label: "Byline"
         widget: "string"
       - label: "Body"
-        name: "body"
+        name: "body_list"
         widget: "list"
         field:
           label: "Section"

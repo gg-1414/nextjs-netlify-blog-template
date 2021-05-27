@@ -191,6 +191,6 @@ collections:
           label: "Section"
           name: "section"
           widget: "markdown"
-      - name: "body_markdown"
-        label: "Body Markdown"
+      - label: "Body Markdown"
+        name: "body"
         widget: "markdown"

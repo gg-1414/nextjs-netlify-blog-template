@@ -200,6 +200,9 @@ collections:
             fields:
               - {label: Name, name: name, widget: string, default: "Emmet"}
               - {label: Avatar, name: avatar, widget: image, default: "/img/ethel.jpg"}
-      - name: "body"
-        label: "Body"
-        widget: "markdown"
+      - label: "Body"
+        name: "body"
+        widget: "list"
+        fields: 
+          - { label: "Section", name: section, widget: "markdown" }
+          

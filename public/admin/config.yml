@@ -188,10 +188,18 @@ collections:
         label: Categories
         widget: categories
         separator: __
-      - label: "Title"
-        name: "title"
-        widget: "string"
-        pattern: ['.{12,}', "Must have at least 12 characters"]
+      - label: "Testimonials"
+        name: "testimonials"
+        widget: "list"
+        summary: '{{fields.quote}} - {{fields.author.name}}'
+        fields:
+          - {label: Quote, name: quote, widget: string, default: "Everything is awesome!"}
+          - label: Author
+            name: author
+            widget: object
+            fields:
+              - {label: Name, name: name, widget: string, default: "Emmet"}
+              - {label: Avatar, name: avatar, widget: image, default: "/img/ethel.jpg"}
       - name: "body"
         label: "Body"
         widget: "markdown"

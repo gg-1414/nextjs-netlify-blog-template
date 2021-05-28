@@ -99,7 +99,7 @@ collections:
     summary: "{{heading}}"
     fields:
       - { label: 'Publish Date', name: 'date', widget: 'datetime', format: 'YYY-MM-DD', timeFormat: false }
-      - { label: 'Color', name: 'color', widget: 'color', enableAlpha: true, allowInput: true }
+      - { label: 'Color', name: 'color', widget: 'color', enableAlpha: true }
       - { label: 'Hero Image Desktop', name: 'hero_img_dt', widget: 'image' }
       - { label: 'Hero Image Mobile', name: 'hero_img_mb', widget: 'image' }
       - name: "tags"

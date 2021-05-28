@@ -191,13 +191,3 @@ collections:
           label: "Section"
           name: "section"
           widget: "markdown"
-      - label: "Body Markdown"
-        name: "body"
-        widget: "markdown"
-      - label: "Content"
-        name: "content"
-        widget: "list"
-        field:
-          label: "Body"
-          name: "body"
-          widget: "markdown"

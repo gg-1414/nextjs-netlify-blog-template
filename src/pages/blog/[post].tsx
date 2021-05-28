@@ -18,7 +18,7 @@ export type Props = {
   heading: string;
   byline: string;
   bodyList: string[];
-  source: MdxRemote.Source;
+  sources: MdxRemote.Source[];
 }
 
 const slugToPostContent = (postContents => {
@@ -36,12 +36,10 @@ export default function Post({
   heading,
   byline,
   bodyList,
-  source
+  sources,
 }: Props) {
-  const content = hydrate(source)
-  console.log('content', content)
-  // const content = hydrate(source)
-  // console.log('content', content)
+  const content = sources.map((it) => hydrate(it));
+  
   return (
     <BlogBasicLayout
       slug={slug}
@@ -53,7 +51,9 @@ export default function Post({
       byline={byline}
       bodyList={bodyList}
     >
-      {content}
+      <div className="body-list">
+        {content}
+      </div>
     </BlogBasicLayout>
   )
 }
@@ -68,19 +68,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params.post as string;
-  console.log('slug',slug)
   const source = fs.readFileSync(slugToPostContent[slug].fullPath, "utf8");
-  console.log('source', source)
-  const { content, data } = matter(source, {
+
+  const { data } = matter(source, {
     engines: { yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object }
   });
-  const test = matter(source, {
-    engines: { yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object }
-  });
-  console.log('test', test)
-  console.log('data', data)
-  console.log('content', content)
-  const mdxSource = await renderToString(content)
+
+  const mdxSourcePromises = data.body_list.map(async (bod: string) => {
+    return await renderToString(bod);
+  })
+  const mdxSourcesResult = await Promise.all(mdxSourcePromises);
+
   return {
     props: {
       slug: slug,
@@ -91,7 +89,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       heading: data.heading,
       byline: data.byline,
       bodyList: data.body_list,
-      source: mdxSource
+      sources: mdxSourcesResult,
     }
   }
 }

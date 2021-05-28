@@ -88,58 +88,6 @@ collections:
                 widget: "string"
                 hint: "Tag name for displaying on the site"
 
-  - name: "posts"
-    label: "Posts"
-    folder: "content/posts/"
-    extension: "mdx"
-    format: "frontmatter"
-    create: true
-    slug: "{{slug}}"
-    identifier_field: slug
-    summary: "{{title}}"
-    fields:
-      - label: "Slug"
-        name: "slug"
-        widget: "string"
-      - label: "Title"
-        name: "title"
-        widget: "string"
-      - label: "Publish Date"
-        name: "date"
-        widget: "datetime"
-        format: "YYYY-MM-DD"
-        dateFormat: "YYYY-MM-DD"
-        timeFormat: false
-      - label: Author
-        name: "author"
-        widget: relation
-        collection: "meta"
-        file: "authors"
-        searchFields:
-          - "authors.*.name"
-        displayFields:
-          - "authors.*.name"
-        valueField: "authors.*.slug"
-      - label: Tags
-        label_singular: "Tag"
-        name: "tags"
-        widget: list
-        summary: "{{fields.tag}}"
-        field:
-          label: Tag
-          name: tag
-          widget: relation
-          collection: "meta"
-          file: "tags"
-          searchFields:
-            - "tags.*.name"
-          displayFields:
-            - "tags.*.name"
-          valueField: "tags.*.slug"
-      - label: "Body"
-        name: "body"
-        widget: "markdown"
-
   - name: "blog-basic"
     label: "Blog (Basic)"
     folder: "content/blogs/"
@@ -150,18 +98,10 @@ collections:
     identifier_field: slug
     summary: "{{heading}}"
     fields:
-      - name: "date"
-        label: "Publish Date"
-        widget: "datetime"
-        format: "YYYY-MM-DD"
-        dateFormat: "YYYY-MM-DD"
-        timeFormat: false
-      - name: "hero_img_dt"
-        label: "Hero Image Desktop"
-        widget: "image"
-      - name: "hero_img_mb"
-        label: "Hero Image Mobile"
-        widget: "image"
+      - { label: 'Publish Date', name: 'date', widget: 'datetime', format: 'YYY-MM-DD', timeFormat: false }
+      - { label: 'Color', name: 'color', widget: 'color', enableAlpha: true, allowInput: true }
+      - { label: 'Hero Image Desktop', name: 'hero_img_dt', widget: 'image' }
+      - { label: 'Hero Image Mobile', name: 'hero_img_mb', widget: 'image' }
       - name: "tags"
         label: Tags
         label_singular: "Tag"
@@ -178,12 +118,8 @@ collections:
           displayFields:
             - "tags.*.name"
           valueField: "tags.*.slug"
-      - name: "heading"
-        label: "Heading"
-        widget: "string"
-      - name: "byline"
-        label: "Byline"
-        widget: "string"
+      - { label: 'Heading', name: 'heading', widget: 'string' }
+      - { label: 'Byline', name: 'byline', widget: 'string' }
       - label: "Body"
         name: "body_list"
         widget: "list"

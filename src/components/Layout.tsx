@@ -33,11 +33,9 @@ export default function Layout({ children }: Props) {
           @media (min-width: 769px) {
             .root {
               display: flex;
-              flex: 1 0 auto;
+              flex-direction: column;
             }
-            main {
-              flex: 1 0 auto;
-            }
+
           }
         `}
       </style>

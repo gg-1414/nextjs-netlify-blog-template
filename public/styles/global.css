@@ -42,3 +42,19 @@ a:hover {
   top: 0;
   left: 0;
 }
+
+.body {
+  max-width: 683px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.body p {
+  line-height: 1.5;
+  text-indent: 20px;
+}
+
+@media (min-width: 769px) {
+  .body p {
+    font-size: 30px;
+  }
+}

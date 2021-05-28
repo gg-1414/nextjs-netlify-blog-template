@@ -35,7 +35,6 @@ export default function Post({
   dateString,
   heading,
   byline,
-  bodyList,
   sources,
 }: Props) {
   const content = sources.map((it) => hydrate(it));
@@ -49,11 +48,8 @@ export default function Post({
       date={parseISO(dateString)}
       heading={heading}
       byline={byline}
-      bodyList={bodyList}
     >
-      <div className="body-list">
-        {content}
-      </div>
+      {content}
     </BlogBasicLayout>
   )
 }
@@ -88,7 +84,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       dateString: data.date,
       heading: data.heading,
       byline: data.byline,
-      bodyList: data.body_list,
       sources: mdxSourcesResult,
     }
   }

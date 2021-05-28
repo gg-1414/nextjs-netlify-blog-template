@@ -82,13 +82,24 @@ export default function Navigation() {
               ul {
                 opacity: 1;
                 width: 7rem;
-                top: auto;
+                width: 100%;
+                height: 64px;
+                top: 0;
                 display: block;
                 transform: translateY(0);
+                flex-direction: row;
+                text-align: center;
+                align-items: center;
+                justify-content: center;
               }
               li {
                 font-size: 1rem;
                 padding: 0;
+                flex: 1;
+                width: auto;
+                display: inline-block;
+                margin: 20px 16px 0;
+                height: 100%;
               }
             }
           `}

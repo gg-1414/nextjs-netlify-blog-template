@@ -13,7 +13,6 @@ type Props = {
   date: Date;
   heading: string;
   byline: string;
-  bodyList: string[];
   children: React.ReactNode;
 }
 
@@ -33,7 +32,6 @@ export default function BlogBasicLayout({
   // date,
   heading,
   byline,
-  bodyList,
   children,
 }: Props) {
   const keywords = tags.map(it => getTag(it).name);
@@ -71,14 +69,8 @@ export default function BlogBasicLayout({
           </div> */}
 
           <h2>{heading}</h2>
-          <p className="by-line" dangerouslySetInnerHTML={addNbsp(byline)}/>
+          <p className="byline" dangerouslySetInnerHTML={addNbsp(byline)}/>
           <div className="body">{children}</div>
-          {/* <div className="body">
-            {bodyList.map((it, i) => (
-              <p key={i} dangerouslySetInnerHTML={{__html: it}}>
-              </p>
-            ))}
-          </div> */}
         </section>
       </article>
       <style jsx>
@@ -88,6 +80,8 @@ export default function BlogBasicLayout({
           }
           img {
             width: 100%;
+            max-height: 569px;
+            object-fit: cover;
           }
           h2 {
             line-height: 1;
@@ -96,7 +90,7 @@ export default function BlogBasicLayout({
             font-family: "Queens";
             font-weight: 100;
           }
-          .by-line {
+          .byline {
             font-size: 20px;
             font-weight: 500;
             text-align: center;
@@ -115,9 +109,6 @@ export default function BlogBasicLayout({
           .tag-list li:first-child {
             margin-left: 0;
           }
-          .body {
-            line-height: 1.5;
-          }
 
           @media (max-width: 768px) {
             .desktop-only {
@@ -128,6 +119,18 @@ export default function BlogBasicLayout({
           @media (min-width: 769px) {
             .mobile-only {
               display: none;
+            }
+            img {
+              max-height: 771px;
+            }
+            .tag-list a {
+              font-size: 24px;
+            }
+            h2 {
+              font-size: 130px;
+            }
+            .byline {
+              font-size: 30px;
             }
           }
         `}

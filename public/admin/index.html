@@ -18,9 +18,12 @@
         render: function () {
           var entry = this.props.entry;
           // var date = entry.getIn(["data", "date"]);
+          var heroImgDtData = entry.getIn(['data', 'hero_img_dt']);
+          var heroImgDt = this.props.getAsset(heroImgDtData);
           return h(
             "div",
             { className: "content" },
+            h('img', {src: heroImgDt.toString()}),
             h("h1", {}, entry.getIn(["data", "heading"])),
             // h("time", {}, entry.getIn(["data", "date"])),
             // h("div", {}, this.props.widgetFor("body"))

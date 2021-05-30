@@ -12,6 +12,7 @@ import renderToString from "next-mdx-remote/render-to-string";
 export type Props = {
   slug: string;
   tags: string[];
+  bgColor: string;
   heroImgDtSrc: string;
   heroImgMbSrc: string;
   dateString: string;
@@ -30,6 +31,7 @@ const slugToPostContent = (postContents => {
 export default function Post({
   slug,
   tags,
+  bgColor,
   heroImgDtSrc,
   heroImgMbSrc,
   dateString,
@@ -43,6 +45,7 @@ export default function Post({
     <BlogBasicLayout
       slug={slug}
       tags={tags}
+      bgColor={bgColor}
       heroImgDt={heroImgDtSrc}
       heroImgMb={heroImgMbSrc}
       date={parseISO(dateString)}
@@ -69,7 +72,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { data } = matter(source, {
     engines: { yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object }
   });
-
+  console.log('data',data)
   const mdxSourcePromises = data.body_list.map(async (bod: string) => {
     return await renderToString(bod);
   })
@@ -79,6 +82,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       slug: slug,
       tags: data.tags,
+      bgColor: data.color,
       heroImgDtSrc: data.hero_img_dt,
       heroImgMbSrc: data.hero_img_mb,
       dateString: data.date,

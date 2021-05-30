@@ -8,6 +8,7 @@ import TagButton from "./TagButton";
 type Props = {
   slug: string;
   tags: string[];
+  bgColor: string;
   heroImgDt: string;
   heroImgMb: string;
   date: Date;
@@ -27,6 +28,7 @@ function addNbsp(str: string) {
 export default function BlogBasicLayout({
   slug,
   tags,
+  bgColor,
   heroImgDt,
   heroImgMb,
   // date,
@@ -35,7 +37,7 @@ export default function BlogBasicLayout({
   children,
 }: Props) {
   const keywords = tags.map(it => getTag(it).name);
-  console.log('childrenn', children)
+  
   return (
     <Layout>
       <BasicMeta
@@ -53,7 +55,7 @@ export default function BlogBasicLayout({
           </picture>
         </section>
 
-        <section className="content">
+        <section className="content" style={{background: bgColor}}>
           <ul className={"tag-list"}>
             {tags.map((it, i) => (
               <li key={i}>

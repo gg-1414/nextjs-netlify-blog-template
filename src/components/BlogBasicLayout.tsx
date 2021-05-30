@@ -10,6 +10,7 @@ type Props = {
   tags: string[];
   bgColor: string;
   heroImgDt: string;
+  heroImgTb: string;
   heroImgMb: string;
   date: Date;
   heading: string;
@@ -30,6 +31,7 @@ export default function BlogBasicLayout({
   tags,
   bgColor,
   heroImgDt,
+  // heroImgTb,
   heroImgMb,
   // date,
   heading,
@@ -37,7 +39,7 @@ export default function BlogBasicLayout({
   children,
 }: Props) {
   const keywords = tags.map(it => getTag(it).name);
-  
+
   return (
     <Layout>
       <BasicMeta

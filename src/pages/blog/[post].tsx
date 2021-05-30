@@ -33,6 +33,7 @@ export default function Post({
   tags,
   bgColor,
   heroImgDtSrc,
+  heroImgTbSrc,
   heroImgMbSrc,
   dateString,
   heading,
@@ -47,6 +48,7 @@ export default function Post({
       tags={tags}
       bgColor={bgColor}
       heroImgDt={heroImgDtSrc}
+      heroImgTb={heroImgTbSrc}
       heroImgMb={heroImgMbSrc}
       date={parseISO(dateString)}
       heading={heading}
@@ -84,6 +86,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       tags: data.tags,
       bgColor: data.color,
       heroImgDtSrc: data.hero_img_dt,
+      heroImgTbSrc: data.hero_img_tb,
       heroImgMbSrc: data.hero_img_mb,
       dateString: data.date,
       heading: data.heading,

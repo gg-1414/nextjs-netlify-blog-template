@@ -98,11 +98,11 @@ collections:
     identifier_field: slug
     summary: "{{heading}}"
     fields:
-      - { label: 'Publish Date', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD', timeFormat: false }
-      - { label: 'Color', name: 'color', widget: 'color', enableAlpha: true }
-      - { label: 'Hero Image Desktop', name: 'hero_img_dt', widget: 'image' }
-      - { label: 'Hero Image Tablet', name: 'hero_img_tb', widget: 'image' }
-      - { label: 'Hero Image Mobile', name: 'hero_img_mb', widget: 'image' }
+      - { name: 'date', label: 'Publish Date', widget: 'datetime', format: 'YYYY-MM-DD', timeFormat: false }
+      - { name: 'color', label: 'Color', widget: 'color', enableAlpha: true }
+      - { name: 'hero_img_dt', label: 'Hero Image Desktop', widget: 'image' }
+      - { name: 'hero_img_tb', label: 'Hero Image Tablet', widget: 'image' }
+      - { name: 'hero_img_mb', label: 'Hero Image Mobile', widget: 'image' }
       - name: "tags"
         label: Tags
         label_singular: "Tag"
@@ -119,10 +119,10 @@ collections:
           displayFields:
             - "tags.*.name"
           valueField: "tags.*.slug"
-      - { label: 'Heading', name: 'heading', widget: 'string' }
-      - { label: 'Byline', name: 'byline', widget: 'string' }
-      - label: "Body"
-        name: "body_list"
+      - { name: 'heading', label: 'Heading', widget: 'string' }
+      - { name: 'byline', label: 'Byline', widget: 'string' }
+      - name: "body_list"
+        label: "Body"
         widget: "list"
         field:
           label: "Section"

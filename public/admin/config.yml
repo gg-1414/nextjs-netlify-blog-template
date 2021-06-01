@@ -131,7 +131,7 @@ collections:
 
   - name: "blog-full"
     label: "Blog (Full)"
-    folder: "content/blogs/"
+    folder: "content/blogs/full"
     extension: "mdx"
     format: "frontmatter"
     create: true

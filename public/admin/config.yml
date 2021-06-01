@@ -128,3 +128,86 @@ collections:
           label: "Section"
           name: "section"
           widget: "markdown"
+
+  - name: "blog-full"
+    label: "Blog (Full)"
+    folder: "content/blogs/full"
+    extension: "mdx"
+    format: "frontmatter"
+    create: true
+    slug: "{{date}}_{{heading}}"
+    identifier_field: slug
+    summary: "{{heading}}"
+    fields:
+      - { name: 'date', label: 'Publish Date', widget: 'datetime', format: 'YYYY-MM-DD', timeFormat: false }
+      - { name: 'color', label: 'Color', widget: 'color', enableAlpha: true }
+      - { name: 'hero_img_dt', label: 'Hero Image Desktop', widget: 'image' }
+      - { name: 'hero_img_tb', label: 'Hero Image Tablet', widget: 'image' }
+      - { name: 'hero_img_mb', label: 'Hero Image Mobile', widget: 'image' }
+      - name: "tags"
+        label: Tags
+        label_singular: "Tag"
+        widget: list
+        summary: "{{fields.tag}}"
+        field:
+          label: Tag
+          name: tag
+          widget: relation
+          collection: "meta"
+          file: "tags"
+          searchFields:
+            - "tags.*.name"
+          displayFields:
+            - "tags.*.name"
+          valueField: "tags.*.slug"
+      - { name: 'heading', label: 'Heading', widget: 'string' }
+      - { name: 'byline', label: 'Byline', widget: 'string' }
+      - name: "body_group_1"
+        label: "Body Group 1"
+        widget: "list"
+        field:
+          name: "section"
+          label: "Section"
+          widget: "markdown"
+      - name: "image_group_1"
+        label: "Image Group 1"
+        widget: "list"
+        field:
+          name: "image"
+          label: "Image"
+          widget: "image"
+      - name: "body_group_2"
+        label: "Body Group 2"
+        widget: "list"
+        field:
+          name: "section"
+          label: "Section"
+          widget: "markdown"
+      - name: "image_group_2"
+        label: "Image Group 2"
+        widget: "list"
+        field:
+          name: "image"
+          label: "Image"
+          widget: "image"
+      - name: "body_group_3"
+        label: "Body Group 3"
+        widget: "list"
+        field:
+          name: "section"
+          label: "Section"
+          widget: "markdown"
+      - name: "image_group_3"
+        label: "Image Group 3"
+        widget: "list"
+        field:
+          name: "image"
+          label: "Image"
+          widget: "image"
+      - name: "body_group_4"
+        label: "Body Group 4"
+        widget: "list"
+        field:
+          name: "section"
+          label: "Section"
+          widget: "markdown"

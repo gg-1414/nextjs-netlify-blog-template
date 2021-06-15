@@ -3,7 +3,8 @@
 
 html,
 body {
-  font-family: "Ubuntu", sans-serif;
+  /* font-family: "Ubuntu", sans-serif; */
+  font-family: "Neue Montreal", "system", sans-serif;
   background-color: #fff;
   color: #222;
   font-weight: 200;
@@ -40,4 +41,20 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.body {
+  max-width: 683px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.body p {
+  line-height: 1.5;
+  text-indent: 20px;
+}
+
+@media (min-width: 769px) {
+  .body p {
+    font-size: 30px;
+  }
 }

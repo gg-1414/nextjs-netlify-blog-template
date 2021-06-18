@@ -14,6 +14,7 @@ export type Props = {
   tags: string[];
   bgColor: string;
   heroImgDtSrc: string;
+  heroImgTbSrc: string;
   heroImgMbSrc: string;
   dateString: string;
   heading: string;
@@ -22,7 +23,7 @@ export type Props = {
   sources: MdxRemote.Source[];
 }
 
-const slugToPostContent = (postContents => {
+const slugToPostContent = ((postContents) => {
   let hash = {}
   postContents.forEach(it => hash[it.slug] = it)
   return hash;

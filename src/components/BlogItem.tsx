@@ -8,6 +8,7 @@ type Props = {
 };
 
 export default function BlogItem({ blog }: Props) {
+  console.log('blog.slug', blog.slug)
   return (
     <Link href={"/blog/" + blog.slug}>
       <a>

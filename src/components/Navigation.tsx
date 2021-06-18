@@ -23,14 +23,21 @@ export default function Navigation() {
                   router.pathname.startsWith("/posts") ? "active" : null
                 }
               >
-                blog
+                posts
               </a>
             </Link>
           </li>
           <li>
             <Link href="/blog">
               <a className={router.pathname === "/blog" ? "active" : null}>
-                blog basics
+                blogs
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/blogs-full">
+              <a className={router.pathname === "/blogs-full" ? "active" : null}>
+                blogs-full
               </a>
             </Link>
           </li>

@@ -3,7 +3,6 @@ import matter from "gray-matter";
 import path from "path";
 import yaml from "js-yaml";
 
-const blogsBasicDir = path.join(process.cwd(), "content/blogs/basic");
 const blogsFullDir = path.join(process.cwd(), "content/blogs/full");
 
 export type BlogContent = {
@@ -15,7 +14,13 @@ export type BlogContent = {
   readonly tags?: string[];
   readonly heading: string;
   readonly byline: string;
-  readonly body_list: string[];
+  readonly body_group_1: string[];
+  readonly image_group_1: string[];
+  readonly body_group_2: string[];
+  readonly image_group_2: string[];
+  readonly body_group_3: string[];
+  readonly image_group_3: string[];
+  readonly body_group_4: string[];
   readonly fullPath: string;
   readonly slug: string;
 }
@@ -23,31 +28,21 @@ export type BlogContent = {
 let blogCache: BlogContent[];
 
 export function fetchBlogContent(): BlogContent[] {
-  if (blogCache) {
-    console.log('blogCache?', blogCache);
-    return blogCache;
-  }
-
-  // Get file names under /blogs
-  const fileNames = fs.readdirSync(blogsBasicDir);
-  // const fileNames = fs.readdirSync(blogsFullDir);
-  // const fileNames = [...fs.readdirSync(blogsBasicDir), ...fs.readdirSync(blogsFullDir)]
-  // console.log('fileNames',fileNames)
-  const allBlogsData = fileNames
+  const fileNames = fs.readdirSync(blogsFullDir);
+  const allBlogFullData = fileNames
     .filter((it) => it.endsWith(".mdx"))
     .map((fileName) => {
-      // Read markdown file as string
-      const fullPath = path.join(blogsBasicDir, fileName);
+      const fullPath = path.join(blogsFullDir, fileName);
       const slug = fileName.replace(/\.mdx$/, "");
       const fileContents = fs.readFileSync(fullPath, "utf8");
 
-      // console.log('fileContents',fileContents)
       // Use gray-matter to parse the blog metadata section
       const matterResult = matter(fileContents, {
         engines: {
           yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object,
         },
       });
+
       const matterData = matterResult.data as {
         date: string;
         color: string;
@@ -57,18 +52,23 @@ export function fetchBlogContent(): BlogContent[] {
         tags: string[];
         heading: string;
         byline: string;
-        body_list: string[];
+        body_group_1: string[];
+        image_group_1: string[];
+        body_group_2: string[];
+        image_group_2: string[];
+        body_group_3: string[];
+        image_group_3: string[];
+        body_group_4: string[];
         fullPath: string;
         slug: string;
       };
       matterData.fullPath = fullPath;
       matterData.slug = slug;
-
       return matterData;
     });
 
   // Sort blogs by date
-  blogCache = allBlogsData.sort((a, b) => {
+  blogCache = allBlogFullData.sort((a, b) => {
     if (a.date < b.date) {
       return 1;
     } else {
